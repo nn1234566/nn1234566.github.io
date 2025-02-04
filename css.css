@@ -1,0 +1,16 @@
+/* 自定义主题色 */
+:root {
+    --primary-color: #5d6976;
+    --secondary-color: #358fd4;
+}
+
+.navbar {
+    background-color: var(--primary-color: #5d6976) !important;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
