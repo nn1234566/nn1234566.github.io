@@ -14,3 +14,22 @@
 .card:hover {
     transform: translateY(-10px);
 }
+
+/* 成果卡片样式 */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* 联系方式链接样式 */
+#contact a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+#contact a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
