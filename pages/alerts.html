@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>告警配置</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 复用导航栏 -->
+    <nav class="navbar..."></nav>
+
+    <div class="container mt-4">
+        <h3>告警规则配置</h3>
+        <div class="card shadow">
+            <div class="card-body">
+                <!-- 默认规则 -->
+                <h5>默认告警规则</h5>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item">
+                        <strong>CPU使用率 > 80%</strong> - 级别: 高
+                    </li>
+                    <li class="list-group-item">
+                        <strong>内存使用率 > 90%</strong> - 级别: 紧急
+                    </li>
+                </ul>
+
+                <!-- 新增告警表单 -->
+                <h5>自定义告警规则</h5>
+                <form id="addAlertForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label">指标类型</label>
+                            <select class="form-select" required>
+                                <option value="CPU">CPU使用率</option>
+                                <option value="Memory">内存使用率</option>
+                                <option value="Disk">磁盘使用率</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">阈值 (%)</label>
+                            <input type="number" class="form-control" min="0" max="100" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">告警级别</label>
+                            <select class="form-select" required>
+                                <option value="low">低</option>
+                                <option value="medium">中</option>
+                                <option value="high">高</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">保存规则</button>
+                </form>
+
+                <!-- 自定义规则列表 -->
+                <h5 class="mt-4">自定义规则</h5>
+                <div id="customAlertsList">
+                    <!-- 动态加载规则 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 从localStorage加载告警规则
+        let alerts = JSON.parse(localStorage.getItem('alerts')) || [];
+
+        // 渲染自定义告警
+        function renderAlerts() {
+            const container = document.getElementById('customAlertsList');
+            container.innerHTML = alerts.map((alert, index) => `
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <strong>${alert.metric} > ${alert.threshold}%</strong>
+                                <span class="badge bg-${getAlertLevelColor(alert.level)} ms-2">${alert.level}</span>
+                            </div>
+                            <button class="btn btn-sm btn-danger" onclick="deleteAlert(${index})">删除</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 根据级别获取颜色
+        function getAlertLevelColor(level) {
+            return {
+                low: 'warning',
+                medium: 'info',
+                high: 'danger'
+            }[level];
+        }
+
+        // 添加告警规则
+        document.getElementById('addAlertForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const metric = e.target[0].value;
+            const threshold = e.target[1].value;
+            const level = e.target[2].value;
+
+            alerts.push({ metric, threshold, level });
+            localStorage.setItem('alerts', JSON.stringify(alerts));
+            renderAlerts();
+            e.target.reset();
+        });
+
+        // 删除告警规则
+        window.deleteAlert = (index) => {
+            alerts.splice(index, 1);
+            localStorage.setItem('alerts', JSON.stringify(alerts));
+            renderAlerts();
+        };
+
+        // 初始化渲染
+        renderAlerts();
+    </script>
+</body>
+</html>

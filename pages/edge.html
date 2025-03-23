@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边缘节点</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 复用导航栏 -->
+    <nav class="navbar..."></nav>
+
+    <div class="container mt-4">
+        <h3>边缘节点管理</h3>
+        <div class="card shadow">
+            <div class="card-body">
+                <!-- 添加节点表单 -->
+                <form id="addEdgeForm" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">节点IP</label>
+                            <input type="text" class="form-control" placeholder="例如：192.168.1.100" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">节点名称</label>
+                            <input type="text" class="form-control" placeholder="例如：边缘节点-01" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">添加节点</button>
+                </form>
+
+                <!-- 节点列表 -->
+                <h5>已接入节点</h5>
+                <div class="row" id="edgeNodesList">
+                    <!-- 动态加载节点卡片 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 从localStorage加载节点数据
+        let edgeNodes = JSON.parse(localStorage.getItem('edgeNodes')) || [];
+
+        // 渲染节点列表
+        function renderEdgeNodes() {
+            const container = document.getElementById('edgeNodesList');
+            container.innerHTML = edgeNodes.map((node, index) => `
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6>${node.name}</h6>
+                            <p class="mb-1"><strong>IP:</strong> ${node.ip}</p>
+                            <p class="mb-1"><strong>状态:</strong> <span class="text-success">在线</span></p>
+                            <button class="btn btn-sm btn-danger mt-2" onclick="deleteEdgeNode(${index})">移除</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 添加节点
+        document.getElementById('addEdgeForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const ip = e.target[0].value;
+            const name = e.target[1].value;
+
+            edgeNodes.push({ ip, name, status: 'online' });
+            localStorage.setItem('edgeNodes', JSON.stringify(edgeNodes));
+            renderEdgeNodes();
+            e.target.reset();
+        });
+
+        // 删除节点
+        window.deleteEdgeNode = (index) => {
+            edgeNodes.splice(index, 1);
+            localStorage.setItem('edgeNodes', JSON.stringify(edgeNodes));
+            renderEdgeNodes();
+        };
+
+        // 初始化渲染
+        renderEdgeNodes();
+    </script>
+</body>
+</html>
