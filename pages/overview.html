@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>平台概览</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <script src="../js/chart.min.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <script src="../../js/chart.min.js"></script>
 </head>
 <body>
-    <!-- 复用导航栏代码（同welcome.html） -->
+    <!-- 复用导航栏代码 -->
     <nav class="navbar..."></nav>
 
     <div class="container mt-4">
@@ -23,8 +25,8 @@
     </div>
 
     <script>
-        // CPU使用率图表
-        new Chart(document.getElementById('cpuChart').getContext('2d'), {
+        // 初始化CPU使用率图表
+        new Chart(document.getElementById('cpuChart'), {
             type: 'line',
             data: {
                 labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
@@ -36,8 +38,6 @@
                 }]
             }
         });
-
-        // 内存使用率图表（代码类似）
     </script>
 </body>
 </html>

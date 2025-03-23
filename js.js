@@ -1,40 +1,36 @@
 // 登录表单提交逻辑
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-    // 模拟登录成功（实际应验证用户名密码）
-    if (username && password) {
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.href = "welcome.html";
-    } else {
-        alert("请输入账号和密码！");
+            if (username && password) {
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.href = "dashboard.html";
+            } else {
+                alert("请输入账号和密码！");
+            }
+        });
     }
-});
 
-// 检查登录状态（页面加载时）
-window.addEventListener("load", function() {
-    if (window.location.pathname.includes("welcome.html") || window.location.pathname.includes("pages/")) {
+    // 检查登录状态
+    if (window.location.pathname.includes("dashboard.html") || window.location.pathname.includes("pages/")) {
         const isLoggedIn = localStorage.getItem("isLoggedIn");
         if (!isLoggedIn) {
             window.location.href = "login.html";
         }
     }
 });
-// 平滑滚动导航
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
 
-// 项目卡片点击事件
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-        alert('即将跳转到项目详情页！');
-    });
-});
+// 动态加载导航栏（可选）
+function loadNavbar() {
+    const navbarPlaceholder = document.getElementById("navbar-placeholder");
+    if (navbarPlaceholder) {
+        navbarPlaceholder.innerHTML = `
+            <nav class="navbar..."></nav>
+        `;
+    }
+}
