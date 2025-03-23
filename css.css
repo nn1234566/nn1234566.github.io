@@ -1,0 +1,20 @@
+/* 登录页卡片样式 */
+.custom-card {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* 导航栏固定顶部 */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* 图表容器 */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>子节点管理</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 复用导航栏代码 -->
+    <nav class="navbar..."></nav>
+
+    <div class="container mt-4">
+        <h3>容器组管理</h3>
+        <button class="btn btn-primary mb-3" onclick="addNode()">新增容器组</button>
+        <table class="table table-striped">
+            <thead>
+                <tr><th>名称</th><th>状态</th><th>操作</th></tr>
+            </thead>
+            <tbody id="nodeList">
+                <!-- 初始示例数据 -->
+                <tr><td>容器组1</td><td><span class="badge bg-success">运行中</span></td><td><button class="btn btn-sm btn-danger" onclick="deleteNode(this)">删除</button></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addNode() {
+            const nodeList = document.getElementById('nodeList');
+            const newNode = `
+                <tr>
+                    <td>容器组${nodeList.children.length + 1}</td>
+                    <td><span class="badge bg-warning">启动中</span></td>
+                    <td><button class="btn btn-sm btn-danger" onclick="deleteNode(this)">删除</button></td>
+                </tr>
+            `;
+            nodeList.insertAdjacentHTML('beforeend', newNode);
+        }
+
+        function deleteNode(button) {
+            button.closest('tr').remove();
+        }
+    </script>
+</body>
+</html>

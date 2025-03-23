@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>平台概览</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/chart.min.js"></script>
+</head>
+<body>
+    <!-- 复用导航栏代码（同welcome.html） -->
+    <nav class="navbar..."></nav>
+
+    <div class="container mt-4">
+        <h3>集群运行状态监控</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="cpuChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="memoryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CPU使用率图表
+        new Chart(document.getElementById('cpuChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+                datasets: [{
+                    label: 'CPU使用率 (%)',
+                    data: [30, 50, 45, 70, 60, 80],
+                    borderColor: '#ff6384',
+                    tension: 0.1
+                }]
+            }
+        });
+
+        // 内存使用率图表（代码类似）
+    </script>
+</body>
+</html>
