@@ -1,60 +1,29 @@
 /* 通用样式 */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background-color: #f8f9fa;
 }
 
-/* 登录页卡片 */
-.custom-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* 导航栏阴影 */
+/* 导航栏 */
 .navbar {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* 卡片悬停效果 */
-.card:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s;
-}
-
-/* 响应式表格 */
-@media (max-width: 768px) {
-    .table-responsive {
-        overflow-x: auto;
-    }
-}
-/* 卡片动态效果 */
+/* 卡片效果 */
 .card {
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: transform 0.3s, box-shadow 0.3s;
     border: none;
 }
 .card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transform: translateY(-3px);
 }
 
-/* 进度条美化 */
+/* 进度条 */
 .progress {
     height: 20px;
     border-radius: 10px;
-    background-color: #e9ecef;
 }
 .progress-bar {
     border-radius: 10px;
-    font-size: 0.8rem;
-}
-
-/* 表格优化 */
-.table-hover tbody tr:hover {
-    background-color: #f8f9fa;
-}
-.table th {
-    font-weight: 600;
-    color: #495057;
 }
