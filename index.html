@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>平台首页</title>
-    <meta http-equiv="refresh" content="0; url=login.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 自动跳转到登录页 -->
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">我的平台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#about">关于</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">项目</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页内容 -->
+    <div class="container mt-5">
+        <section id="hero" class="text-center">
+            <h1 class="display-4">欢迎来到我的平台</h1>
+            <p class="lead">一个专注于技术与创意的空间</p>
+        </section>
+
+        <section id="projects" class="mt-5">
+            <h2 class="mb-4">精选项目</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img src="images/project1.jpg" class="card-img-top" alt="项目1">
+                        <div class="card-body">
+                            <h5 class="card-title">项目一</h5>
+                            <p class="card-text">项目简要描述...</p>
+                            <a href="#" class="btn btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 更多项目卡片 -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 引入Bootstrap JS和自定义脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

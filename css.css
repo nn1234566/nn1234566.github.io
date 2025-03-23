@@ -1,20 +1,27 @@
-/* 登录页卡片样式 */
-.custom-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* 主背景和字体 */
+body {
+    background-color: #f8f9fa;
+    color: #2c3e50;
 }
 
-/* 导航栏固定顶部 */
+/* 导航栏美化 */
 .navbar {
-    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* 图表容器 */
-.chart-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+/* 卡片悬停效果 */
+.card {
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #2980b9;
 }

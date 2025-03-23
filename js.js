@@ -22,3 +22,19 @@ window.addEventListener("load", function() {
         }
     }
 });
+// 平滑滚动导航
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// 项目卡片点击事件
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        alert('即将跳转到项目详情页！');
+    });
+});
