@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>平台管理</title>
+    <title>总览 | 云平台</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
-    <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="dashboard.html">平台管理</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="pages/overview.html">平台概览</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/nodes.html">子节点管理</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/storage.html">存储管理</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/edge.html">边缘节点</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/alerts.html">告警配置</a></li>
-                </ul>
+<body class="dashboard-page">
+    <div class="container">
+        <div class="row g-4">
+            <!-- 三个并排卡片 -->
+            <div class="col-md-4">
+                <div class="stats-card bg-dark-blue">
+                    <h3>CPU使用率</h3>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 65%">65%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card bg-dark-blue">
+                    <h3>内存占用</h3>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 45%">45%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card bg-dark-blue">
+                    <h3>存储空间</h3>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 80%">80%</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <!-- 主内容区 -->
-    <div class="container mt-4">
-        <h3>欢迎使用平台管理系统</h3>
-        <p>请通过上方导航栏访问功能模块。</p>
     </div>
-
-    <!-- 引入JavaScript -->
-    <script src="../js/main.js"></script>
 </body>
 </html>

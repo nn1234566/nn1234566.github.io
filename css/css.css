@@ -1,0 +1,69 @@
+/* === 全局配色 === */
+:root {
+    --light-blue: #F0F8FF;  /* 浅蓝背景 */
+    --dark-blue: #2C3E50;   /* 深蓝卡片 */
+    --accent-blue: #3498DB; /* 强调色 */
+}
+
+/* === 基础样式 === */
+body {
+    background-color: var(--light-blue);
+    min-height: 100vh;
+}
+
+/* === 登录页 === */
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.auth-card {
+    background: var(--dark-blue);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-title {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.input-lg {
+    height: 50px;
+    font-size: 1.1rem;
+}
+
+/* === 总览卡片 === */
+.stats-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+}
+
+.stats-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* === 节点管理 === */
+.node-list, .add-node-form {
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+    height: 500px;
+}
+
+.status {
+    float: right;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.online { background: #2ECC71; }
+.offline { background: #E74C3C; }
