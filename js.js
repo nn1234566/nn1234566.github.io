@@ -34,3 +34,33 @@ function loadNavbar() {
         `;
     }
 }
+// 初始化磁盘使用图表
+const diskCtx = document.getElementById('diskChart').getContext('2d');
+new Chart(diskCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['已使用', '剩余'],
+        datasets: [{
+            data: [63.66, 78.14-63.66],
+            backgroundColor: ['#ff6384', '#36a2eb']
+        }]
+    },
+    options: {
+        plugins: {
+            legend: { position: 'bottom' }
+        }
+    }
+});
+
+// 作业类型分布图
+const jobTypeCtx = document.getElementById('jobTypeChart').getContext('2d');
+new Chart(jobTypeCtx, {
+    type: 'pie',
+    data: {
+        labels: ['新建', '删除', '用户设置'],
+        datasets: [{
+            data: [21, 32, 8],
+            backgroundColor: ['#4bc0c0', '#ff9f40', '#9966ff']
+        }]
+    }
+});
